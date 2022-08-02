@@ -180,7 +180,7 @@ export default {
     sendEvent()
     {
       axios
-        .get('http://159.223.167.251/cx79l1k.php?clickid='+this.$route.query.start+'&event'+this.eventNum+'=1' )
+        .get('https://pravdobot.com/cx79l1k.php?clickid='+this.$route.query.start+'&event'+this.eventNum+'=1' )
         .then(response => (this.info = response));
     }
   },
