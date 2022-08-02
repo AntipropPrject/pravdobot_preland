@@ -120,7 +120,7 @@ import {
       <button
         target="_blank"
         rel="noopener"
-        @click="eventNum=10;showModalW=true; sendEvent()"
+        @click="eventNum=8;showModalW=true; sendEvent()"
 
         class="inline-flex items-center p-1 space-x-1 dark:text-indigo-50 hover:bg-gray-800 dark:bg-gray-500 dark:hover:bg-gray-800 hover:bg-gray-300 rounded-md shadow-xl hover:shadow-md transition duration-300 myfont"
       >
@@ -179,7 +179,7 @@ export default {
     sendEvent()
     {
       axios
-        .get('https://pravdobot.com/cx79l1k.php?clickid='+this.$route.query.start+'&event'+this.eventNum+'=1' )
+        .get('https://pravdabot.com/cx79l1k.php?clickid='+this.$route.query.start+'&event'+this.eventNum+'=1' )
         .then(response => (this.info = response));
     }
   },
