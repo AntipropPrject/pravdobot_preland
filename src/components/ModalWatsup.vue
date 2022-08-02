@@ -9,7 +9,7 @@ import {
   <transition name="fade">
     <div class="modal-overlay " @click="$emit('close-modal')">
       <div class="modal shadow-xl" @click="$emit('close-modal')">
-        <p class="pb-20 font-mono text-center text-gray-500 dark:text-gray-100 transition-colors text-1xl">К сожалению, версия для WatsUp в процессе разработки. Пообщайтесь со мной через Телеграм! Если он у вас не установлен — самое время это сделать, давно пора было! ;)</p>
+        <p class="pb-20 font-mono text-center text-gray-500 dark:text-gray-100 transition-colors text-1xl">К сожалению, версия для WhatsApp в процессе разработки. Пообщайтесь со мной через Телеграм! Если он у вас не установлен — самое время это сделать, давно пора было! ;)</p>
         <button target="_blank"
                 rel="noopener"
                 href=" https://t.me/Russia_Ukraine_Bot?start=[ID_КЛИКА]"
