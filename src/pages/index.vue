@@ -26,7 +26,7 @@ import {
             xmlns="http://www.w3.org/2000/svg"
             class="w-8 h-8"
             fill="none"
-            viewBox="0 0 24 24"
+            viewBox="0 0 25 25"
             stroke="currentColor"
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -40,7 +40,7 @@ import {
             xmlns="http://www.w3.org/2000/svg"
             class="w-8 h-8"
             fill="none"
-            viewBox="0 0 24 24"
+            viewBox="0 0 25 25"
             stroke="currentColor"
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -165,12 +165,12 @@ export default {
       eventNum: " ",
       showModalV: false,
       showModalW: false,
-      click_id: " ",
+      click_id: this.$route.query.uclick
     };
   },
   mounted() {
     let click_id;
-    click_id = this.$route.query.start;
+    click_id = this.$route.query.uclick;
     // if(click_id !== null) {
     //   this.click_id = click_id;
     // }
@@ -179,7 +179,7 @@ export default {
     sendEvent()
     {
       axios
-        .get('https://pravdabot.com/cx79l1k.php?clickid='+this.$route.query.start+'&event'+this.eventNum+'=1' )
+        .get('https://159.223.167.251/cx79l1k.php?clickid='+this.$route.query.uclick+'&event'+this.eventNum+'=1' )
         .then(response => (this.info = response));
     }
   },
@@ -194,7 +194,9 @@ export default {
   font-max-size: 2px;
   font-size: x-small;
 }
-
+.textstyle {
+  padding-bottom: 10%
+}
 
 
 
