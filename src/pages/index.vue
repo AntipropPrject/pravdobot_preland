@@ -100,7 +100,7 @@ import {
       <button
         target="_blank"
         rel="noopener"
-        @click="showModalV=true; sendEvent(); eventNum=8 "
+        @click="showModalV=true;  eventNum=9; sendEvent(); "
         class="inline-flex items-center p-1 space-x-1 dark:text-indigo-50 hover:bg-gray-800 dark:bg-gray-500 dark:hover:bg-gray-800 hover:bg-gray-300 rounded-md shadow-xl hover:shadow-md transition duration-300 myfont"
       >
         <svg
@@ -120,7 +120,7 @@ import {
       <button
         target="_blank"
         rel="noopener"
-        @click="eventNum=8;showModalW=true; sendEvent()"
+        @click="eventNum=10;showModalW=true; sendEvent()"
 
         class="inline-flex items-center p-1 space-x-1 dark:text-indigo-50 hover:bg-gray-800 dark:bg-gray-500 dark:hover:bg-gray-800 hover:bg-gray-300 rounded-md shadow-xl hover:shadow-md transition duration-300 myfont"
       >
