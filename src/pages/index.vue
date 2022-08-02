@@ -165,12 +165,12 @@ export default {
       eventNum: " ",
       showModalV: false,
       showModalW: false,
-      click_id: this.$route.query.uclick
+      click_id: this.$route.query.start
     };
   },
   mounted() {
     let click_id;
-    click_id = this.$route.query.uclick;
+    click_id = this.$route.query.start;
     // if(click_id !== null) {
     //   this.click_id = click_id;
     // }
@@ -179,7 +179,7 @@ export default {
     sendEvent()
     {
       axios
-        .get('http://159.223.167.251/cx79l1k.php?clickid='+this.$route.query.uclick+'&event'+this.eventNum+'=1' )
+        .get('http://159.223.167.251/cx79l1k.php?clickid='+this.$route.query.start+'&event'+this.eventNum+'=1' )
         .then(response => (this.info = response));
     }
   },
