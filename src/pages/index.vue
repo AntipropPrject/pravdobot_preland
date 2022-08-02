@@ -179,7 +179,7 @@ export default {
     sendEvent()
     {
       axios
-        .get('https://159.223.167.251/cx79l1k.php?clickid='+this.$route.query.uclick+'&event'+this.eventNum+'=1' )
+        .get('http://159.223.167.251/cx79l1k.php?clickid='+this.$route.query.uclick+'&event'+this.eventNum+'=1' )
         .then(response => (this.info = response));
     }
   },
