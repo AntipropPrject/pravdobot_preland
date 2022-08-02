@@ -1,13 +1,11 @@
 import { ref } from 'vue';
+import axios from "axios";
+import {info} from "autoprefixer";
 
 export const currentTheme = ref('light');
 
 export const initTheme = () => {
-  if (localStorage.getItem('theme')) {
-    currentTheme.value = localStorage.getItem('theme');
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    currentTheme.value = 'dark';
-  }
+  currentTheme.value = 'dark';
   if (currentTheme.value === 'dark') {
     document.documentElement.classList.add('dark');
   } else {
@@ -27,3 +25,8 @@ export function switchTheme() {
   document.documentElement.setAttribute('data-theme', currentTheme.value);
   localStorage.setItem('theme', currentTheme.value);
 }
+
+export function sendPostBack() {
+  axios.get('https://api.coindesk.com/v1/bpi/currentprice.json').then(response => (this.info = response))
+}
+

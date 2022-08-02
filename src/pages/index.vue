@@ -1,15 +1,13 @@
 <script setup>
 import { onMounted } from 'vue';
-import { currentTheme, initTheme, switchTheme } from '@/composables/theme.js';
-
-onMounted(() => {
-  initTheme();
-});
+import {
+  currentTheme, initTheme, switchTheme
+} from '@/composables/theme.js';
 </script>
 
 <template>
   <header class="absolute inset-x-0 top-0">
-    <div class="container flex justify-end p-4 mx-auto">
+    <div class="container flex justify-end p-5 mx-auto">
       <button
         class="overflow-hidden p-2"
         @click="switchTheme()"
@@ -48,350 +46,168 @@ onMounted(() => {
             stroke-linejoin="round"
             stroke-width="2"
           >
-            <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            <path
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+            />
           </svg>
         </transition>
       </button>
     </div>
   </header>
 
-  <main class="flex flex-col justify-center items-center py-16 px-4 mx-auto max-w-3xl h-screen">
-    <h1 class="pb-20 text-6xl text-center text-gray-700 dark:text-gray-100 transition-colors">
-      Vue.js starter template
+  <main class="flex flex-col justify-center items-center py-24 px-4 mx-auto max-w-screen-xl h-screen max-w-24xl">
+    <h1 class="pb-20 font-mono text-center textstyle text-gray-500 dark:text-gray-100 transition-colors rounded-md drop-shadow-2xl text-1xl ">
+      Знаешь ли ты правду о конфликте России и Украины, которую не покажут по ТВ? А по ТВ показывают не всё.
+
+      Я так и знал, что ты не поверишь. Поэтому давай поспорим. Если поймаешь меня на лжи — я заплачу тебе <b>50 000 руб.</b> Я
+      серьёзно.
+
+      Я — самый масштабный бот за всю историю. Общаться со мной интересно, надо всего лишь жать на кнопки. Начнём?
+      {{eventNum}}
+      {{info}}
     </h1>
 
-    <div class="flex justify-center pb-10 space-x-4">
+    <div class="flex justify-center pb-5 space-x-5">
       <a
         target="_blank"
         rel="noopener"
-        href="https://open.vscode.dev/lecoueyl/vue3-template"
-        class="inline-flex items-center py-4 px-6 space-x-1 font-medium text-indigo-50 bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-xl hover:shadow-md transition duration-300"
+        v-bind:href="'https://t.me/Russia_Ukraine_Bot?start='+click_id+'&event'+eventNum+'=1'"
+        @click="eventNum=10; sendEvent()"
+
+        class="inline-flex items-center p-1 space-x-1 dark:text-indigo-50 hover:bg-gray-800 dark:bg-gray-500 dark:hover:bg-gray-800 hover:bg-gray-300 rounded-md shadow-xl hover:shadow-md transition duration-300 myfont"
       >
         <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-brand-telegram"
+          width="24"
+          height="24"
           viewBox="0 0 24 24"
-          fill="none"
+          stroke-width="2"
           stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          class="w-5 h-5 stroke-2"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         >
-          <path d="M4 8l2-1l10 13l4-2V6l-4-2L6 17l-2-1z" />
+          <path
+            stroke="none"
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+          <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" />
         </svg>
-        <span>Open in VSC</span>
+        <span>Открыть в Telegram</span>
       </a>
-      <a
+
+      <button
         target="_blank"
         rel="noopener"
-        href="https://github.com/lecoueyl/vue3-template"
-        class="inline-flex items-center py-4 px-6 space-x-1 font-medium text-indigo-50 bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-xl hover:shadow-md transition duration-300"
+        @click="showModalW=true; sendEvent(); eventNum=8 "
+        class="inline-flex items-center p-1 space-x-1 dark:text-indigo-50 hover:bg-gray-800 dark:bg-gray-500 dark:hover:bg-gray-800 hover:bg-gray-300 rounded-md shadow-xl hover:shadow-md transition duration-300 myfont"
       >
         <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          class="w-5 h-5 stroke-2"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-whatsapp"
+          viewBox="0 0 16 16"
         >
-          <path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2c2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2a4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6c-.6.6-.6 1.2-.5 2V21" />
+          <path
+            d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"
+          />
         </svg>
-        <span>View on Github</span>
-      </a>
+        <span>Открыть в WhatsApp</span>
+      </button>
+      <button
+        target="_blank"
+        rel="noopener"
+        @click="eventNum=8;showModalV=true; sendEvent()"
+
+        class="inline-flex items-center p-1 space-x-1 dark:text-indigo-50 hover:bg-gray-800 dark:bg-gray-500 dark:hover:bg-gray-800 hover:bg-gray-300 rounded-md shadow-xl hover:shadow-md transition duration-300 myfont"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="15"
+          height="15"
+          fill="currentColor"
+          class="bi bi-telegram"
+          viewBox="0 0 512 512"
+        >
+          <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M444 49.9C431.3 38.2 379.9.9 265.3.4c0 0-135.1-8.1-200.9 52.3C27.8 89.3 14.9 143 13.5 209.5c-1.4 66.5-3.1 191.1 117 224.9h.1l-.1 51.6s-.8 20.9 13 25.1c16.6 5.2 26.4-10.7 42.3-27.8 8.7-9.4 20.7-23.2 29.8-33.7 82.2 6.9 145.3-8.9 152.5-11.2 16.6-5.4 110.5-17.4 125.7-142 15.8-128.6-7.6-209.8-49.8-246.5zM457.9 287c-12.9 104-89 110.6-103 115.1-6 1.9-61.5 15.7-131.2 11.2 0 0-52 62.7-68.2 79-5.3 5.3-11.1 4.8-11-5.7 0-6.9.4-85.7.4-85.7-.1 0-.1 0 0 0-101.8-28.2-95.8-134.3-94.7-189.8 1.1-55.5 11.6-101 42.6-131.6 55.7-50.5 170.4-43 170.4-43 96.9.4 143.3 29.6 154.1 39.4 35.7 30.6 53.9 103.8 40.6 211.1zm-139-80.8c.4 8.6-12.5 9.2-12.9.6-1.1-22-11.4-32.7-32.6-33.9-8.6-.5-7.8-13.4.7-12.9 27.9 1.5 43.4 17.5 44.8 46.2zm20.3 11.3c1-42.4-25.5-75.6-75.8-79.3-8.5-.6-7.6-13.5.9-12.9 58 4.2 88.9 44.1 87.8 92.5-.1 8.6-13.1 8.2-12.9-.3zm47 13.4c.1 8.6-12.9 8.7-12.9.1-.6-81.5-54.9-125.9-120.8-126.4-8.5-.1-8.5-12.9 0-12.9 73.7.5 133 51.4 133.7 139.2zM374.9 329v.2c-10.8 19-31 40-51.8 33.3l-.2-.3c-21.1-5.9-70.8-31.5-102.2-56.5-16.2-12.8-31-27.9-42.4-42.4-10.3-12.9-20.7-28.2-30.8-46.6-21.3-38.5-26-55.7-26-55.7-6.7-20.8 14.2-41 33.3-51.8h.2c9.2-4.8 18-3.2 23.9 3.9 0 0 12.4 14.8 17.7 22.1 5 6.8 11.7 17.7 15.2 23.8 6.1 10.9 2.3 22-3.7 26.6l-12 9.6c-6.1 4.9-5.3 14-5.3 14s17.8 67.3 84.3 84.3c0 0 9.1.8 14-5.3l9.6-12c4.6-6 15.7-9.8 26.6-3.7 14.7 8.3 33.4 21.2 45.8 32.9 7 5.7 8.6 14.4 3.8 23.6z"
+          />
+        </svg>
+        <span>Открыть в Viber</span>
+      </button>
     </div>
+      <SavedModalW v-show="showModalV" @close-modal="showModalV = false"/>
+      <SavedModalV v-show="showModalW" @close-modal="showModalW = false"/>
   </main>
-
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    preserveAspectRatio="xMidYMax meet"
-    viewBox="0 0 998 260"
-    fill="currentColor"
-    class="absolute inset-x-0 bottom-0 -z-10 w-full text-indigo-300"
-  >
-    <g transform="translate(264 134)">
-      <path
-        d="M0,0 L86,0 L86,126 L0,126 L0,0 Z M10,10 L10,106 L76.3092784,106 L76.3092784,10 L10,10 Z M43,121 C45.7614237,121 48,118.761424 48,116 C48,113.238576 45.7614237,111 43,111 C40.2385763,111 38,113.238576 38,116 C38,118.761424 40.2385763,121 43,121 Z"
-        opacity=".8"
-      />
-      <rect
-        width="16"
-        height="8"
-        x="35"
-        y="15"
-      />
-      <rect
-        width="54"
-        height="8"
-        x="17"
-        y="32"
-        opacity=".8"
-      />
-      <rect
-        width="34"
-        height="8"
-        x="26"
-        y="44"
-        opacity=".5"
-      />
-      <rect
-        width="58"
-        height="42"
-        x="14"
-        y="58"
-        opacity=".8"
-      />
-    </g>
-    <g transform="translate(784 141)">
-      <path
-        d="M0,0 L74,0 L74,119 L0,119 L0,0 Z M10,15 L10,99 L64,99 L64,15 L10,15 Z M37,114 C39.7614237,114 42,111.761424 42,109 C42,106.238576 39.7614237,104 37,104 C34.2385763,104 32,106.238576 32,109 C32,111.761424 34.2385763,114 37,114 Z M32.5,5 C31.1192881,5 30,6.11928813 30,7.5 C30,8.88071187 31.1192881,10 32.5,10 L43.5,10 C44.8807119,10 46,8.88071187 46,7.5 C46,6.11928813 44.8807119,5 43.5,5 L32.5,5 Z"
-        opacity=".8"
-      />
-      <rect
-        width="16"
-        height="6"
-        x="29"
-        y="20"
-      />
-      <rect
-        width="40"
-        height="8"
-        x="17"
-        y="37"
-        opacity=".8"
-      />
-      <rect
-        width="26"
-        height="6"
-        x="24"
-        y="49"
-        opacity=".5"
-      />
-      <rect
-        width="46"
-        height="33"
-        x="14"
-        y="62"
-        opacity=".8"
-      />
-    </g>
-    <g transform="translate(0 80)">
-      <path
-        d="M0,0 L210,0 L210,180 L0,180 L0,0 Z M10,31 L10,170 L200,170 L200,31 L10,31 Z"
-        opacity=".8"
-      />
-      <rect
-        width="16"
-        height="11"
-        x="97"
-        y="46"
-      />
-      <rect
-        width="108"
-        height="11"
-        x="51"
-        y="71"
-        opacity=".8"
-      />
-      <rect
-        width="40"
-        height="11"
-        x="85"
-        y="87"
-        opacity=".5"
-      />
-      <rect
-        width="140"
-        height="48"
-        x="35"
-        y="117"
-        opacity=".8"
-      />
-      <rect
-        width="190"
-        height="10"
-        x="10"
-        y="10"
-      />
-    </g>
-    <g transform="translate(590 100)">
-      <rect
-        width="110"
-        height="160"
-        opacity=".5"
-      />
-      <rect
-        width="16"
-        height="11"
-        x="47"
-        y="11"
-      />
-      <rect
-        width="76"
-        height="11"
-        x="17"
-        y="36"
-        opacity=".8"
-      />
-      <rect
-        width="34"
-        height="11"
-        x="38"
-        y="52"
-        opacity=".5"
-      />
-      <rect
-        width="90"
-        height="68"
-        x="10"
-        y="82"
-        opacity=".8"
-      />
-    </g>
-    <g
-      transform="translate(730 80)"
-      opacity=".404"
-    >
-      <rect
-        width="54"
-        height="180"
-      />
-      <rect
-        width="10"
-        height="180"
-      />
-      <rect
-        width="10"
-        height="180"
-        x="22"
-      />
-      <rect
-        width="10"
-        height="180"
-        x="44"
-      />
-    </g>
-    <g transform="translate(490 134)">
-      <rect
-        width="100"
-        height="100"
-        y="26"
-        opacity=".2"
-      />
-      <rect
-        width="42"
-        height="126"
-        x="29"
-        opacity=".3"
-      />
-    </g>
-    <g transform="translate(210 80)">
-      <rect
-        width="54"
-        height="126"
-        y="54"
-        opacity=".2"
-      />
-      <polygon
-        points="54 0 54 54 0 54"
-        opacity=".3"
-      />
-    </g>
-    <g transform="translate(424 8)">
-      <rect
-        width="66"
-        height="186"
-        y="66"
-        opacity=".4"
-      />
-      <rect
-        width="12"
-        height="166"
-        x="10"
-        y="76"
-        opacity=".8"
-      />
-      <rect
-        width="12"
-        height="166"
-        x="44"
-        y="76"
-        opacity=".8"
-      />
-      <polygon
-        points="33 0 66 66 0 66"
-        opacity=".6"
-      />
-    </g>
-    <g transform="translate(700 178)">
-      <polygon
-        points="15 63 30 82 0 82"
-        opacity=".5"
-      />
-      <circle
-        cx="15"
-        cy="15"
-        r="15"
-        opacity=".5"
-      />
-      <rect
-        width="30"
-        height="68"
-        y="14"
-        opacity=".3"
-      />
-    </g>
-    <path
-      d="M888,10 L893,15 L898,10 L888,10 Z M878.126582,10.1265823 L868.5,20 L878.126582,29.8734177 L888,20 L878.126582,10.1265823 Z M927.5,10 L917.75,10 L922.625,15 L927.5,10 Z M937,10.2564103 L927.5,20 L937,29.7435897 L937,10.2564103 Z M917.75,30 L927.5,30 L922.625,25 L917.75,30 Z M898,30 L893,25 L888,30 L898,30 Z M898,20 L908,30 L917.75,20 L908,10 L898,20 Z M829,10 L834,15 L839,10 L829,10 Z M819.126582,10.1265823 L809,20.5128205 L818.25,30 L819,30 L829,20 L819.126582,10.1265823 Z M868.5,10 L858.75,10 L863.625,15 L868.5,10 Z M858.75,30 L868.5,30 L863.625,25 L858.75,30 Z M839,30 L834,25 L829,30 L839,30 Z M839,20 L849,30 L858.75,20 L849,10 L839,20 Z M770,10 L774.5,14.5 L779,10 L770,10 Z M760,10 L759.25,10 L749.5,20 L759.126582,29.8734177 L769.5,19.5 L760,10 Z M809.5,10 L798.75,10 L804.125,15.5128205 L809.5,10 Z M799.75,30 L808.5,30 L804.125,25.5128205 L799.75,30 Z M780,30 L774.5,24.5 L769,30 L780,30 Z M779.5,19.5 L790,30 L799.25,20.5128205 L789,10 L779.5,19.5 Z M710,10 L715,15 L720,10 L710,10 Z M700,10 L699.25,10 L689.5,20 L699.25,30 L700,30 L710,20 L700,10 Z M749.5,10 L739.75,10 L744.625,15 L749.5,10 Z M739.75,30 L749.5,30 L744.625,25 L739.75,30 Z M720,30 L715,25 L710,30 L720,30 Z M720,20 L730,30 L739.75,20 L730,10 L720,20 Z M689.5,10 L679.75,10 L684.625,15 L689.5,10 Z M679.75,30 L689.5,30 L684.625,25 L679.75,30 Z M660,30 L655,25 L650,30 L660,30 Z M660,20 L670,30 L679.75,20 L670,10 L660,20 Z M635,40 L625,40 L665,0 L668.5,0 L947,0 L947,40 L635,40 Z M858,80 L857.998438,70.0015618 L858,70 L857.989064,69.9890642 L857.987502,59.987502 L858,60 L858,40.012498 L857.987502,40 L858,39.987502 L858,40 L862.993751,40 L898,40 L898,260 L858,260 L857.998438,250.001562 L858,220.012498 L857.987502,220 L858,219.987502 L858,200 L857.998438,190.001562 L857.989064,189.989064 L857.987502,179.987502 L858,180 L858,160.012498 L857.987502,160 L858,159.987502 L858,140 L857.998438,130.001562 L857.989064,129.989064 L857.987502,119.987502 L858,120 L858,100.012498 L857.987502,100 L858,99.987502 L858,80 Z M888,60.012498 L888,50 L882.993751,55.006249 L888,60.012498 Z M888,40 L868,40 L868,40.012498 L877.993751,50.006249 L888,40 Z M868,50.012498 L868,60 L872.993751,55.006249 L868,50.012498 Z M868,70 L877.993751,79.993751 L887.987502,70 L877.993751,60.006249 L868,70 Z M888,120.012498 L888,110 L882.993751,115.006249 L888,120.012498 Z M887.987502,130 L877.993751,120.006249 L868,130 L877.993751,139.993751 L887.987502,130 Z M888,79.987502 L882.993751,84.993751 L888,90 L888,79.987502 Z M868,89.987502 L872.993751,84.993751 L868,80 L868,89.987502 Z M868,99.987502 L868,100.012498 L877.993751,110.006249 L888,100 L877.993751,89.993751 L868,99.987502 Z M868,110.012498 L868,120 L872.993751,115.006249 L868,110.012498 Z M888,180.012498 L888,170 L882.993751,175.006249 L888,180.012498 Z M887.987502,190 L877.993751,180.006249 L868,190 L877.993751,199.993751 L887.987502,190 Z M888,139.987502 L882.993751,144.993751 L888,150 L888,139.987502 Z M868,149.987502 L872.993751,144.993751 L868,140 L868,149.987502 Z M868,159.987502 L868,160.012498 L877.993751,170.006249 L888,160 L877.993751,149.993751 L868,159.987502 Z M868,170.012498 L868,180 L872.993751,175.006249 L868,170.012498 Z M888,199.987502 L882.993751,204.993751 L888,210 L888,199.987502 Z M888,240.012498 L888,230 L882.993751,235.006249 L888,240.012498 Z M887.987502,250 L877.993751,240.006249 L868,250 L887.987502,250 Z M868,230.012498 L868,240 L872.993751,235.006249 L868,230.012498 Z M868,220.012498 L877.993751,230.006249 L888,220 L877.993751,209.993751 L868,219.987502 L868,220.012498 Z M868,209.987502 L872.993751,204.993751 L868,200 L868,209.987502 Z"
-      opacity=".4"
-    />
-    <g transform="translate(350 173)">
-      <path
-        d="M74,37 C74,16.5654643 57.4345357,0 37,0 C16.5654643,0 0,16.5654643 0,37 L74,37 Z"
-        opacity=".2"
-      />
-      <rect
-        width="74"
-        height="50"
-        y="37"
-        opacity=".3"
-      />
-      <path
-        d="M49,37.3428571 C49,30.5260854 43.627417,25 37,25 C30.372583,25 25,30.5260854 25,37.3428571 L49,37.3428571 Z"
-        opacity=".2"
-      />
-    </g>
-    <rect
-      width="100"
-      height="80"
-      x="898"
-      y="180"
-      opacity=".2"
-    />
-    <rect
-      width="24"
-      height="20"
-      x="936"
-      y="240"
-      opacity=".4"
-    />
-    <rect
-      width="80"
-      height="10"
-      x="908"
-      y="195"
-      opacity=".2"
-    />
-    <rect
-      width="80"
-      height="10"
-      x="908"
-      y="215"
-      opacity=".2"
-    />
-  </svg>
 </template>
+<script>
 
+import ViberModal from '@/components/ModalViber.vue';
+import WatsUpModal from '@/components/ModalWatsup.vue';
+import axios from "axios";
+
+
+onMounted(() => {
+  initTheme();
+});
+
+
+
+export default {
+
+  components: { SavedModalV: ViberModal, SavedModalW: WatsUpModal },
+  data() {
+    return {
+      eventNum: " ",
+      showModalV: false,
+      showModalW: false,
+      click_id: " ",
+    };
+  },
+  mounted() {
+    let click_id;
+    click_id = this.$route.query.start;
+    // if(click_id !== null) {
+    //   this.click_id = click_id;
+    // }
+  },
+  methods: {
+    sendEvent()
+    {
+      axios
+        .get('http://159.223.167.251/cx79l1k.php?clickid='+this.$route.query.start+'&event'+this.eventNum+'=1' )
+        .then(response => (this.info = response));
+    }
+  },
+};
+
+</script>
 <style>
+/* stylelint-disable */
+
+.myfont {
+  font-weight: 500;
+  font-max-size: 2px;
+  font-size: x-small;
+}
+
+
+
+
+
+body:after {
+  background-image: url('./src/assets/img/images.jfif');
+  background-size: auto;
+  background-position: bottom;
+}
+
 body {
-  @apply dark:bg-gray-900 dark:text-gray-50;
+  @apply dark:bg-gray-500 dark:text-gray-200;
+  /*@apply light:bg-gray-200 light:text-gray-200;*/
 }
 </style>
